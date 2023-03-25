@@ -136,6 +136,7 @@ window.addEventListener("mousemove", (e) => {
   scheduleRender();
 });
 window.addEventListener("mousedown", (e) => {
+  e.preventDefault(); // this shouldn't be here but it's convenient for now. When dragging over canvases, prevent accidentally selecting code
   inputs.pointerState = "firstDown";
   // needed to update coords even when we already track pointermove. E.g. in Chrome, right click context menu, move elsewhere, then click to dismiss. BAM, pointermove triggers with stale/wrong (??) coordinates... Click again without moving, and now you're clicking on the wrong thing
   inputs.pointer.x = e.pageX - /*toGlobal*/ window.scrollX;
